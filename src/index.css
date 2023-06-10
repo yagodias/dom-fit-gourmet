@@ -7,9 +7,6 @@ body {
   margin: 0;
   background-color: #e6cea3;
   font-family: lucidity-condensed;
-}
-
-.backgroundImage {
   background-image: url('../public/dom-fit-logo-enhaced-modified.png');
   background-position: center;
   background-repeat: no-repeat;

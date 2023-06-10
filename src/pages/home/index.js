@@ -17,7 +17,6 @@ import {
 import ReorderIcon from '@mui/icons-material/Reorder';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import WrapBenefits from '../../components/WrapBenefits';
-import '../../../src/index.css';
 
 const HomePage = () => {
   const [openMenu, setOpenMenu] = useState(null);
@@ -31,7 +30,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="backgroundImage">
+    <div>
       <AppBar position="static" style={{ backgroundColor: '#e3a22e' }}>
         <Toolbar>
         <img alt="Dom Fit Logo" width="50px" height="50px" src="https://res.cloudinary.com/darkpuzzle/image/upload/v1686424796/dom-fit-logo-modifed_la7gtp.png" />
