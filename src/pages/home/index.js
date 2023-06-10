@@ -1,6 +1,7 @@
-// import Image from 'next/image';
+import { useState } from 'react';
 import {
   AppBar,
+  Avatar,
   Toolbar,
   Typography,
   Button,
@@ -9,36 +10,85 @@ import {
   Card,
   CardMedia,
   CardContent,
-  CardActionArea
+  CardActionArea,
+  Menu,
+  MenuItem,
 } from '@mui/material';
-import './homePage.css';
+import ReorderIcon from '@mui/icons-material/Reorder';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import WrapBenefits from '../../components/WrapBenefits';
+import '../../../src/index.css';
 
 const HomePage = () => {
-  const onClickAnyWhere = () => {
-    window.alert('Para de clicar nas coisas, tem nada aqui não');
+  const [openMenu, setOpenMenu] = useState(null);
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const open = Boolean(openMenu);
+  const handleClick = (event) => {
+    setOpenMenu(event.currentTarget);
+  };
+  const handleClose = () => {
+    setOpenMenu(null);
   };
 
   return (
-    <div>
+    <div className="backgroundImage">
       <AppBar position="static" style={{ backgroundColor: '#e3a22e' }}>
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Dom Fit Delivery
-          </Typography>
-          <Button
-            color="inherit"
-            onClick={() => onClickAnyWhere()}
-            sx={{ backgroundColor: '#b07d23' }}
-          >
-            Pedido
-          </Button>
-          <Button
-            color="inherit"
-            onClick={() => onClickAnyWhere()}
-            sx={{ backgroundColor: '#b07d23', marginLeft: 1 }}
-          >
-            Sobre
-          </Button>
+        <img alt="Dom Fit Logo" width="50px" height="50px" src="https://res.cloudinary.com/darkpuzzle/image/upload/v1686424796/dom-fit-logo-modifed_la7gtp.png" />
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: 1 }}>
+          Dom Fit Delivery
+        </Typography>
+          {isMobile ? (
+            <>
+              <Button
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                color="inherit"
+                onClick={handleClick}
+              >
+                <ReorderIcon />
+              </Button>
+              <Menu open={open} anchorEl={openMenu} onClose={handleClose} >
+                <MenuItem>
+                  <Avatar sx={{ width: 32, height: 32, mr: 1 }} />
+                  <Typography>
+                    Meu Perfil
+                  </Typography>
+                </MenuItem>
+                <MenuItem>
+                  Pedido
+                </MenuItem>
+                <MenuItem>
+                  Sobre nós
+                </MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <>
+              <Button
+                color="inherit"
+                sx={{ backgroundColor: '#b07d23' }}
+              >
+                Pedido
+              </Button>
+              <Button
+                color="inherit"
+                sx={{ backgroundColor: '#b07d23', marginLeft: 1 }}
+              >
+                Sobre
+              </Button>
+              <Button
+                color="inherit"
+                sx={{ backgroundColor: '#b07d23', marginLeft: 1 }}
+              >
+                <Avatar sx={{ width: 32, height: 32, mr: 1 }} />
+                <Typography>
+                  Meu Perfil
+                </Typography>
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
 
@@ -48,7 +98,7 @@ const HomePage = () => {
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={4}>
-            <CardActionArea onClick={() => onClickAnyWhere()}>
+            <CardActionArea>
               <Card>
                 <CardMedia
                   component="img"
@@ -68,7 +118,7 @@ const HomePage = () => {
             </CardActionArea>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <CardActionArea onClick={() => onClickAnyWhere()}>
+            <CardActionArea>
               <Card>
                 <CardMedia
                   component="img"
@@ -88,7 +138,7 @@ const HomePage = () => {
             </CardActionArea>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <CardActionArea onClick={() => onClickAnyWhere()}>
+            <CardActionArea>
               <Card>
                 <CardMedia
                   component="img"
@@ -109,6 +159,8 @@ const HomePage = () => {
           </Grid>
         </Grid>
       </Container>
+
+      <WrapBenefits />
     </div>
   );
 };

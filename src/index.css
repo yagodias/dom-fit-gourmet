@@ -9,6 +9,15 @@ body {
   font-family: lucidity-condensed;
 }
 
+.backgroundImage {
+  background-image: url('../public/dom-fit-logo-enhaced-modified.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Set a higher z-index value */
+}
+
 code {
   font-family: lucidity-condensed;
 }
