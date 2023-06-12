@@ -56,8 +56,10 @@ const HomePage = () => {
                     Meu Perfil
                   </Typography>
                 </MenuItem>
-                <MenuItem>
-                  Pedido
+                <MenuItem onClick={() => window.location.replace('/order')}>
+                  <Button>
+                    Pedido
+                  </Button>
                 </MenuItem>
                 <MenuItem>
                   Sobre nós
